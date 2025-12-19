@@ -92,11 +92,9 @@
     <div class="heart">❤️</div>
     <h1>Özür Dilerim</h1>
     <p>
-      Seni kırdıysam gerçekten özür dilerim.<br>
-      Kalbim seni üzmek istemedi.<br><br>
-      Seni çok seviyorum.
+      Seni kırdıysam gerçekten üzgünüm
     </p>
-    <button onclick="baris()">Barışalım mı? 🤍</button>
+    <button onclick="baris()">Barışalım mı 🤍</button>
   </div>
 
   <script>
@@ -104,8 +102,7 @@
       document.getElementById("kart").innerHTML = `
         <div class="heart">❤️</div>
         <p style="font-size:18px;">
-          Seni bir daha asla kırmayacağım<br>
-          <strong>prensesim</strong> ❤️
+          Sinirlendik birbirimizi kırdık falan ama seni üzmek istemedim özür dilerim bir şans daha falan
         </p>
       `;
       startHeartRain();
@@ -121,19 +118,18 @@
           return;
         }
         createHeart();
-      }, 60); // DAHA YOĞUN
-    }
+      }, 60); // yoğun kalp
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "rain-heart";
-      heart.textContent = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (18 + Math.random() * 30) + "px";
-      heart.style.animationDuration = (1.6 + Math.random() * 1.4) + "s"; // DAHA HIZLI
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 3500);
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "rain-heart";
+        heart.textContent = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random() * 30) + "px";
+        heart.style.animationDuration = (1.6 + Math.random() * 1.4) + "s"; // hızlı düşüş
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3500);
+      }
     }
   </script>
 </body>
