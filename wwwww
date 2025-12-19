@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Özür Dilerim ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.25);
+      padding: 28px;
+      border-radius: 22px;
+      max-width: 360px;
+      width: 90%;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 1.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 { font-size: 26px; margin-bottom: 15px; }
+    p  { font-size: 16px; line-height: 1.7; }
+
+    button {
+      margin-top: 22px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #ff4d6d;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:active { transform: scale(0.95); }
+
+    .heart {
+      font-size: 42px;
+      animation: pulse 1.3s infinite;
+      margin-bottom: 10px;
+    }
+
+    /* Kalp yağmuru */
+    .rain-heart {
+      position: fixed;
+      top: -10vh;
+      animation: fall linear forwards;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card" id="kart">
+    <div class="heart">❤️</div>
+    <h1>Özür Dilerim</h1>
+    <p>
+      Seni kırdıysam gerçekten üzgünüm
+    </p>
+    <button onclick="baris()">Barışalım mı 🤍</button>
+  </div>
+
+  <script>
+    function baris() {
+      document.getElementById("kart").innerHTML = `
+        <div class="heart">❤️</div>
+        <p style="font-size:18px;">
+          Sinirlendik birbirimizi kırdık falan ama seni üzmek istemedim özür dilerim bir şans daha falan
+        </p>
+      `;
+      startHeartRain();
+    }
+
+    function startHeartRain() {
+      const duration = 8000; // 8 saniye
+      const endTime = Date.now() + duration;
+
+      const interval = setInterval(() => {
+        if (Date.now() > endTime) {
+          clearInterval(interval);
+          return;
+        }
+        createHeart();
+      }, 60); // yoğun kalp
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "rain-heart";
+        heart.textContent = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random() * 30) + "px";
+        heart.style.animationDuration = (1.6 + Math.random() * 1.4) + "s"; // hızlı düşüş
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3500);
+      }
+    }
+  </script>
+</body>
+</html>
